@@ -33,6 +33,20 @@ class Persona:
             self.cumplir_anios()
             print(f" La edad de la persona por su fecha de nacimiento es {hoy.year - self.fecha_nacimiento.year}")
 
+    def profesion(self, profesion):
+        self.profesion = profesion
+        print(f"{self.nombre} es {self.profesion}")
+
+    def mostrar_info(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Edad: {self.edad}")
+        print(f"Fecha de nacimiento: {self.fecha_nacimiento.strftime('%Y-%m-%d')}")
+        if hasattr(self, 'profesion'):
+            print(f"Profesión: {self.profesion}")
+        else:
+            self.profesion = None
+            print("Profesión: No especificada")
+
 
 
 # Estatica
@@ -79,6 +93,14 @@ persona = Persona(nombre, edad, fecha_nacimiento)
 persona.presentarse()
 # persona.cumplir_anios()
 persona.cumpleanios()
+
+profesion = input("Ingrese su profesión: ")
+if profesion.strip() != "":
+    persona.profesion(profesion)
+else:
+    print("No se ingresó una profesión válida.")
+
+persona.mostrar_info()
 
 
 
